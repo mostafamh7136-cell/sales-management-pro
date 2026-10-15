@@ -1,1 +1,1 @@
-{"name":"salespro","private":true,"version":"1.0.0","scripts":{"test":"node tests/unit.test.js"},"devDependencies":{"@playwright/test":"^1.48.0"}}
+{"name":"salespro","private":true,"version":"1.1.0","scripts":{"test":"node tests/unit.test.js","test:e2e":"playwright test tests/e2e.spec.js tests/axe.spec.js"},"devDependencies":{"@axe-core/playwright":"^4.10.2","@playwright/test":"^1.48.0"}}

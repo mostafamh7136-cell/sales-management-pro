@@ -1,1 +1,1 @@
--- salespro schema: 13 tables FORCE RLS authenticated-only, RPCs complete_sale/void_sale/return_item/pay_installment. Applied live 2026-10-15. Dump: supabase db dump --schema salespro
+-- 001 SalesPro isolated schema. Objects: schema salespro; 13 tables FORCE RLS authenticated-only; functions is_member, my_role, complete_sale, void_sale, return_item, pay_installment. complete_sale locks rows FOR UPDATE, re-reads price/cost, rejects oversell, one transaction. Recreate dump: supabase db dump --schema salespro

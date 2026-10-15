@@ -1,0 +1,2 @@
+# User Guide (EN)
+1. Sign up, login, choose business type. 2. Products: price, cost, stock, SKU, expiry. 3. POS: cart, discount/delivery, payment, paid-now + due date — server atomic, no negative stock. 4. Void (manager) / Return restock. 5. Debts: Pay records payment. 6. Reports From/To, Excel/CSV/PDF. 7. Receipt print + WhatsApp. 8. Settings + Backup. Offline sales queue and sync.

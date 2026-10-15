@@ -8,4 +8,5 @@ jobs:
       - uses: actions/setup-node@v4
         with: {node-version: '20'}
       - run: node tests/unit.test.js
-      - run: '! grep -RInE "sb_secret_|service_role" --exclude-dir=.git index.html lib.js api/ || (echo secret; exit 1)'
+      - run: node --check lib.js
+      - run: '! grep -RInE "sb_secret_|service_role" --exclude-dir=.git --exclude-dir=node_modules index.html lib.js api/ tests/ docs/ || (echo secret; exit 1)'

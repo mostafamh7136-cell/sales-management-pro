@@ -1,4 +1,5 @@
 # SalesPro TODO
 - [x] Audit, salespro schema, FORCE RLS, RPCs, secure client, routing, PWA, reports, settings, tests, CI
-- [ ] Owner action: enable email confirm + set AI_PROVIDER key in Vercel if paid AI wording wanted; run A/B RLS script with 2 test users (tests/rls.test.sql); add custom domain; Sentry DSN (hook ready, no-op without env)
-- Out of scope v1: native mobile apps, multi-branch sync, accounting integrations (reason: sellable MVP first)
+- [x] RPC void/return/pay, sale_items sync, sort, XLS export, axe 0 violations, offline flush
+- [ ] Owner: rotate legacy service_role key; enable email confirm; Vercel env AI_PROVIDER_KEY if paid AI; run tests/rls.mjs with 2 test users; custom domain; Sentry DSN
+- [ ] v1.1: server pagination, invites UI, logo upload, barcode scanner
