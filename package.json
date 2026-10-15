@@ -1,0 +1,1 @@
+{"name":"salespro","private":true,"version":"1.0.0","scripts":{"test":"node tests/unit.test.js"},"devDependencies":{"@playwright/test":"^1.48.0"}}

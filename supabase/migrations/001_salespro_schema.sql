@@ -1,0 +1,1 @@
+-- salespro schema: 13 tables FORCE RLS authenticated-only, RPCs complete_sale/void_sale/return_item/pay_installment. Applied live 2026-10-15. Dump: supabase db dump --schema salespro
