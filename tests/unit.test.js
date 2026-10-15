@@ -1,1 +1,14 @@
-const assert=require('assert');const{calcSale,remaining,validateProduct,insights}=require('../lib.js');let s=calcSale([{price:100,cost:60,qty:2}],{discount:10,taxRate:14,delivery:5});assert.strictEqual(s.total,221.6);assert.strictEqual(s.profit,75);assert.throws(()=>calcSale([{price:10,cost:1,qty:0}]),/invalid_qty/);assert.strictEqual(remaining(100,30),70);let i=insights({sales:[{total:200,cogs:120,tax:10,status:'completed',items:[{name:'A',qty:2}]}],products:[{name:'A',stock:1,low_stock:5}],customers:[{name:'C',balance:50}],expenses:[{amount:20}]});assert.strictEqual(i.netProfit,50);console.log('unit tests PASS');
+const assert=require('assert');const {calcSale,remaining,validateProduct,escapeHtml,insights}=require('../lib.js');
+let s=calcSale([{price:100,cost:60,qty:2}],{discount:10,taxRate:14,delivery:5});
+assert.strictEqual(s.subtotal,200);assert.strictEqual(s.tax,26.6);assert.strictEqual(s.total,221.6);assert.strictEqual(s.profit,75);assert.strictEqual(s.cogs,120);
+assert.throws(()=>calcSale([{price:10,cost:1,qty:0}]),/invalid_qty/);
+assert.throws(()=>calcSale([{price:-1,cost:1,qty:1}]),/invalid_price/);
+assert.throws(()=>calcSale([{price:10,cost:1,qty:1}],{discount:999}),/discount_exceeds/);
+assert.throws(()=>calcSale([]),/empty_sale/);
+assert.strictEqual(remaining(100,30),70);assert.strictEqual(remaining(50,80),0);
+assert.strictEqual(validateProduct({name:'',price:1,cost:0,stock:0}),'name_required');
+assert.strictEqual(validateProduct({name:'x',price:-1}),'negative_price');
+assert.strictEqual(escapeHtml('<a>"x"</a>'),'&lt;a&gt;&quot;x&quot;&lt;/a&gt;');
+let i=insights({sales:[{total:200,cogs:120,tax:10,status:'completed',items:[{name:'A',qty:2}]},{total:999,cogs:1,tax:0,status:'void',items:[]}],products:[{name:'A',stock:1,low_stock:5}],customers:[{name:'C',balance:50}],expenses:[{amount:20}]});
+assert.strictEqual(i.revenue,200);assert.strictEqual(i.netProfit,50);assert.strictEqual(i.orders,1);assert.strictEqual(i.debtors[0].name,'C');assert.strictEqual(i.top[0].name,'A');
+console.log('unit tests PASS (expanded)');

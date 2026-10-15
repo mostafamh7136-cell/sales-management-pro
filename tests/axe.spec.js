@@ -1,0 +1,2 @@
+const {test,expect}=require('@playwright/test');const AxeBuilder=require('@axe-core/playwright').default;const BASE=process.env.BASE||'http://localhost:8901';
+test('axe landing',async({page})=>{await page.goto(BASE);const r=await new AxeBuilder({page}).analyze();console.log('violations',r.violations.map(v=>v.id+':'+v.impact));expect(r.violations.filter(v=>['serious','critical'].includes(v.impact))).toEqual([])});
